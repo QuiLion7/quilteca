@@ -4,7 +4,7 @@ declare namespace NodeJS {
     NODE_ENV: string;
     NEXTAUTH_URL: string;
     HOST_URL: string;
-    NEXTAUTH_SECRET_URL: string;
+    NEXTAUTH_SECRET: string;
     GOOGLE_CLIENT_ID: string;
     GOOGLE_CLIENT_SECRET: string;
   }
