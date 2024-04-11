@@ -26,12 +26,28 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const { status, data } = useSession();
+  const router = useRouter();
 
   async function handleLogin() {
-    await signIn();
+    try {
+      const result = await signIn("google", { redirect: false });
+      if (result?.error) {
+        alert(
+          "Apenas usuários com o domínio @prof.ce.gov.br podem fazer login.",
+        );
+      } else {
+        router.push("/");
+      }
+    } catch (error) {
+      console.error("Erro ao tentar fazer login:", error);
+      alert(
+        "Ocorreu um erro ao tentar fazer login. Por favor, tente novamente.",
+      );
+    }
   }
 
   async function handleLogout() {
