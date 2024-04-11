@@ -124,6 +124,7 @@ export const subjectsList = {
     "Química Orgânica",
     "Química Inorgânica",
     "Fisico-Química",
+    "Bioquímica",
     "Química Ambiental",
   ],
   Sociologia: [
@@ -132,6 +133,590 @@ export const subjectsList = {
     "Sociologia da Educação",
     "Sociologia da Cultura",
     "Sociologia da Política",
+  ],
+};
+
+interface Subject {
+  [topic: string]: (string | Subtopic)[];
+}
+
+interface Subtopic {
+  [subtopic: string]: string[];
+}
+
+interface SpecificSubjectList {
+  [subject: string]: Subject[];
+}
+
+export const specificSubjectList: SpecificSubjectList = {
+  Artes: [
+    {
+      "História da Arte": [
+        "Pré-História da Arte",
+        "Arte Antiga",
+        "Arte Medieval",
+        "Renascimento",
+        "Barroco",
+        "Impressionismo",
+        "Modernismo",
+        "Arte Contemporânea",
+      ],
+    },
+    {
+      "Teoria da Arte": [
+        "Estética",
+        "Semiótica",
+        "Teoria da Cor",
+        "Teoria da Forma",
+        "Teoria da Composição",
+      ],
+    },
+    {
+      "Práticas Artísticas": [
+        "Desenho",
+        "Pintura",
+        "Escultura",
+        "Fotografia",
+        "Arte Digital",
+        "Artes Gráficas",
+        "Arte Performática",
+      ],
+    },
+    {
+      "Arte Contemporânea": [
+        "Movimentos Artísticos Contemporâneos",
+        "Artistas Contemporâneos",
+        "Técnicas Contemporâneas",
+        "Temas Contemporâneos",
+      ],
+    },
+    {
+      "Arte Digital": [
+        "Arte Gerada por Computador",
+        "Arte de Mídia Digital",
+        "Arte Interativa",
+        "Arte em Rede",
+        "Estética da Arte Digital",
+      ],
+    },
+  ],
+  Biologia: [
+    {
+      "Evolução e Diversidade Biológica": [
+        "Teoria da Evolução",
+        "Evidências da Evolução",
+        "Processos Evolutivos",
+        "Diversidade Biológica",
+      ],
+    },
+    {
+      Ecologia: [
+        "Ecossistemas",
+        "Cadeias Alimentares",
+        "Ciclos Biogeoquímicos",
+        "Sucessão Ecológica",
+      ],
+    },
+    {
+      "Genética e Biologia Molecular": [
+        "Mendelismo",
+        "Genética de Populações",
+        "DNA e RNA",
+        "Replicação e Transcrição",
+        "Expressão Gênica",
+        "Engenharia Genética",
+      ],
+    },
+    {
+      "Fisiologia e Anatomia": [
+        "Sistemas Orgânicos",
+        "Anatomia Humana",
+        "Fisiologia Humana",
+        "Homeostase",
+        "Fisiologia Vegetal",
+      ],
+    },
+    {
+      "Biodiversidade e Conservação": [
+        "Conservação de Espécies",
+        "Preservação de Ecossistemas",
+        "Impacto Ambiental",
+        "Desenvolvimento Sustentável",
+      ],
+    },
+  ],
+  "Educação Física": [
+    {
+      "Desenvolvimento Psicomotor": [
+        "Coordenação Motora",
+        "Desenvolvimento Neuromotor",
+        "Percepção Corporal",
+      ],
+    },
+    {
+      "Saúde e Bem-estar": [
+        "Alimentação Saudável",
+        "Atividade Física",
+        "Prevenção de Lesões",
+        "Saúde Mental",
+      ],
+    },
+    {
+      "Práticas Esportivas": [
+        "Esportes Individuais",
+        "Esportes Coletivos",
+        "Atividades Recreativas",
+      ],
+    },
+    {
+      "Educação Física e Saúde Mental": [
+        "Terapia Ocupacional",
+        "Exercícios Terapêuticos",
+        "Meditação e Relaxamento",
+      ],
+    },
+    {
+      "Ginástica e Esportes de Equipes": [
+        "Ginástica Artística",
+        "Ginástica Rítmica",
+        "Basquetebol",
+        "Futebol",
+        "Voleibol",
+      ],
+    },
+  ],
+  Física: [
+    {
+      "Mecânica Clássica": [
+        "Cinemática",
+        "Dinâmica",
+        "Leis de Newton",
+        "Gravitação",
+      ],
+    },
+    {
+      "Mecânica Quântica": [
+        "Dualidade Onda-Partícula",
+        "Modelo Atômico de Bohr",
+        "Princípio da Incerteza",
+        "Mecânica Ondulatória",
+      ],
+    },
+    {
+      "Física do Estado Sólido": [
+        "Estrutura Cristalina",
+        "Propriedades dos Materiais",
+        "Semicondutores",
+        "Materiais Magnéticos",
+      ],
+    },
+    {
+      "Física Atômica e Molecular": [
+        "Estrutura Atômica",
+        "Modelos Atômicos",
+        "Ligações Químicas",
+        "Espectroscopia",
+      ],
+    },
+    {
+      "Física do Espaço e Tempo": [
+        "Relatividade Restrita",
+        "Relatividade Geral",
+        "Cosmologia",
+        "Buracos Negros",
+      ],
+    },
+  ],
+  Filosofia: [
+    {
+      Epistemologia: [
+        "Teoria do Conhecimento",
+        "Racionalismo",
+        "Empirismo",
+        "Ceticismo",
+      ],
+    },
+    {
+      Metafísica: [
+        "Natureza da Realidade",
+        "Ontologia",
+        "Cosmologia",
+        "Existencialismo",
+      ],
+    },
+    {
+      Ética: [
+        "Teorias Éticas",
+        "Ética Normativa",
+        "Ética Aplicada",
+        "Bioética",
+      ],
+    },
+    {
+      "Filosofia da Ciência": [
+        "Natureza da Ciência",
+        "Metodologia Científica",
+        "Filosofia da Matemática",
+        "Filosofia da Física",
+      ],
+    },
+    {
+      "Filosofia da Mente": [
+        "Consciência",
+        "Intencionalidade",
+        "Dualismo",
+        "Materialismo",
+      ],
+    },
+  ],
+  Geografia: [
+    {
+      "Geografia Física": [
+        "Geomorfologia",
+        "Climatologia",
+        "Hidrografia",
+        "Biogeografia",
+      ],
+    },
+    {
+      "Geografia Humana": [
+        "Demografia",
+        "Migrações",
+        "Urbanização",
+        "Globalização",
+      ],
+    },
+    {
+      "Geografia Ambiental": [
+        "Poluição",
+        "Desmatamento",
+        "Desenvolvimento Sustentável",
+        "Conservação Ambiental",
+      ],
+    },
+    {
+      "Geografia Cultural": [
+        "Cultura",
+        "Etnografia",
+        "Patrimônio Cultural",
+        "Turismo Cultural",
+      ],
+    },
+    {
+      "Geografia Urbana": [
+        "Planejamento Urbano",
+        "Gestão de Espaços Urbanos",
+        "Infraestrutura Urbana",
+        "Problemas Socioambientais Urbanos",
+      ],
+    },
+  ],
+  História: [
+    {
+      "História Antiga": [
+        "Civilizações Antigas",
+        "Mesopotâmia",
+        "Egito",
+        "Grécia Antiga",
+        "Roma Antiga",
+      ],
+    },
+    {
+      "História Medieval": [
+        "Idade Média",
+        "Feudalismo",
+        "Cruzadas",
+        "Renascimento Carolíngio",
+      ],
+    },
+    {
+      "História Moderna": [
+        "Renascimento",
+        "Reforma Protestante",
+        "Absolutismo",
+        "Revolução Científica",
+        "Iluminismo",
+      ],
+    },
+    {
+      "História Contemporânea": [
+        "Revolução Francesa",
+        "Revolução Industrial",
+        "Imperialismo",
+        "Primeira Guerra Mundial",
+        "Segunda Guerra Mundial",
+      ],
+    },
+    {
+      "História Global": [
+        "Globalização",
+        "Colonialismo",
+        "Descolonização",
+        "Guerra Fria",
+        "Novas Tecnologias e Comunicações",
+      ],
+    },
+  ],
+  "Língua Espanhola": [
+    {
+      "Gramática Espanhola": [
+        "Morfologia",
+        "Sintaxe",
+        "Semântica",
+        "Fonologia",
+      ],
+    },
+    {
+      "Literatura Espanhola": [
+        "Épocas Literárias",
+        "Autores Representativos",
+        "Gêneros Literários",
+        "Movimentos Literários",
+      ],
+    },
+    {
+      "Cultura Espanhola": [
+        "História e Cultura",
+        "Tradições e Costumes",
+        "Arte e Arquitetura",
+        "Gastronomia",
+      ],
+    },
+    {
+      "Língua Espanhola e Tecnologia": [
+        "Internet e Redes Sociais",
+        "Tecnologias de Comunicação",
+        "Inovação Tecnológica",
+        "Impacto da Tecnologia na Sociedade",
+      ],
+    },
+    {
+      "Língua Espanhola e Mídia": [
+        "Mídia Impressa",
+        "Mídia Digital",
+        "Jornalismo",
+        "Publicidade e Propaganda",
+      ],
+    },
+  ],
+  "Língua Inglesa": [
+    {
+      "Gramática Inglesa": [
+        "Parts of Speech",
+        "Sentence Structure",
+        "Verb Tenses",
+        "Punctuation",
+      ],
+    },
+    {
+      "Literatura Inglesa": [
+        "British Literature",
+        "American Literature",
+        "World Literature",
+        "Literary Movements",
+      ],
+    },
+    {
+      "Cultura Inglesa": [
+        "British Culture",
+        "American Culture",
+        "Globalization and English",
+        "Cultural Identities",
+      ],
+    },
+    {
+      "Língua Inglesa e Tecnologia": [
+        "Digital Communication",
+        "Language Learning Apps",
+        "Online Learning Platforms",
+        "Artificial Intelligence and Language",
+      ],
+    },
+    {
+      "Língua Inglesa e Mídia": [
+        "Mass Media",
+        "Digital Media",
+        "Journalism",
+        "Advertising",
+      ],
+    },
+  ],
+  "Língua Portuguesa": [
+    {
+      "Gramática Portuguesa": [
+        "Morfologia",
+        "Sintaxe",
+        "Semântica",
+        "Fonologia",
+      ],
+    },
+    {
+      "Literatura Portuguesa": [
+        "Épocas Literárias",
+        "Autores Representativos",
+        "Gêneros Literários",
+        "Movimentos Literários",
+      ],
+    },
+    {
+      "Cultura Portuguesa": [
+        "História e Cultura",
+        "Tradições e Costumes",
+        "Arte e Arquitetura",
+        "Gastronomia",
+      ],
+    },
+    {
+      "Língua Portuguesa e Tecnologia": [
+        "Internet e Redes Sociais",
+        "Tecnologias de Comunicação",
+        "Inovação Tecnológica",
+        "Impacto da Tecnologia na Sociedade",
+      ],
+    },
+    {
+      "Língua Portuguesa e Mídia": [
+        "Mídia Impressa",
+        "Mídia Digital",
+        "Jornalismo",
+        "Publicidade e Propaganda",
+      ],
+    },
+  ],
+  Matemática: [
+    {
+      "Matemática Básica": [
+        "Operações Fundamentais",
+        "Números Naturais",
+        "Números Inteiros",
+        "Números Racionais",
+        "Números Reais",
+      ],
+    },
+    {
+      Álgebra: [
+        "Equações e Inequações",
+        "Sistemas Lineares",
+        "Matrizes",
+        "Determinantes",
+        "Análise Combinatória",
+      ],
+    },
+    {
+      Cálculo: [
+        "Limites e Continuidade",
+        "Derivadas",
+        "Integrais",
+        "Equações Diferenciais",
+      ],
+    },
+    {
+      Estatística: [
+        "Análise Descritiva",
+        "Probabilidade",
+        "Distribuições de Probabilidade",
+        "Inferência Estatística",
+      ],
+    },
+    {
+      "Matemática Aplicada": [
+        "Geometria Analítica",
+        "Cálculo Vetorial",
+        "Matemática Financeira",
+        "Modelagem Matemática",
+      ],
+    },
+  ],
+  Química: [
+    {
+      "Química Geral": [
+        "Introdução à Química",
+        "Estrutura da Matéria",
+        "Estados da Matéria",
+        "Termoquímica",
+        "Cinética Química",
+        "Equilíbrio Químico",
+      ],
+    },
+    {
+      "Química Orgânica": [
+        "Introdução à Química Orgânica",
+        "Hidrocarbonetos",
+        "Funções Oxigenadas",
+        "Funções Nitrogenadas",
+        "Reações Orgânicas",
+      ],
+    },
+    {
+      "Química Inorgânica": [
+        "Ácidos e Bases",
+        "Ligações Químicas",
+        "Tabela Periódica",
+      ],
+    },
+    {
+      "Fisico-Química": [
+        "Termodinâmica",
+        "Eletroquímica",
+        "Cinética Química",
+        "Equilíbrio Químico",
+        "Estudo dos Gases",
+      ],
+    },
+    {
+      Bioquímica: ["Compostos Bioquímicos", "Metabolismo", "Enzimologia"],
+    },
+    {
+      "Química Ambiental": [
+        "Poluentes Ambientais",
+        "Tratamento de Efluentes",
+        "Impactos Ambientais",
+        "Legislação Ambiental",
+      ],
+    },
+  ],
+  Sociologia: [
+    {
+      "Teorias Sociais": [
+        "Funcionalismo",
+        "Conflito",
+        "Interacionismo Simbólico",
+        "Estruturalismo",
+        "Pós-estruturalismo",
+      ],
+    },
+    {
+      "Sociologia da Família": [
+        "Estruturas Familiares",
+        "Transformações na Família Contemporânea",
+        "Dinâmica Familiar",
+        "Paternidade e Maternidade",
+      ],
+    },
+    {
+      "Sociologia da Educação": [
+        "Sistema Educacional",
+        "Desigualdade Educacional",
+        "Políticas Educacionais",
+        "Educação Inclusiva",
+      ],
+    },
+    {
+      "Sociologia da Cultura": [
+        "Cultura Popular",
+        "Indústria Cultural",
+        "Cultura de Massa",
+        "Globalização Cultural",
+      ],
+    },
+    {
+      "Sociologia da Política": [
+        "Teorias Políticas",
+        "Participação Política",
+        "Movimentos Sociais",
+        "Democracia e Autoritarismo",
+      ],
+    },
   ],
 };
 
@@ -163,10 +748,12 @@ export const bnccCompetenceList = {
   Natureza: ["Competência 1", "Competência 2", "Competência 3"],
 };
 
+interface BNCCCompetences {
+  [competence: string]: string[];
+}
+
 interface BNCCAbilities {
-  [key: string]: {
-    [key: string]: string[];
-  };
+  [area: string]: BNCCCompetences;
 }
 
 export const bnccAbilitysList: BNCCAbilities = {
