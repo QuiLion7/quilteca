@@ -49,8 +49,8 @@ export default async function MyItems() {
   }));
 
   return (
-    <main className="flex w-full items-center justify-center px-2 2xl:container">
-      <section className="mt-4 flex items-center justify-center gap-2">
+    <main className="flex w-full items-center justify-center 2xl:container">
+      <section className=" flex items-center justify-center gap-2">
         {formattedItemsList.map((item) => (
           <CardItem key={item.id} item={item} />
         ))}
