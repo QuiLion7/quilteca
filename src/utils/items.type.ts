@@ -8,6 +8,7 @@ export interface ItemProps {
   knowledge: string;
   componentCurricular: string;
   subject: string;
+  specificSubject: string;
   author: string;
   year: number;
   bNCCCompetence: string;
