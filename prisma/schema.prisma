@@ -66,6 +66,7 @@ model Item {
   knowledge String
   componentCurricular String
   subject           String
+  specificSubject String
   author            String    
   year              Int
   bNCCCompetence    String
