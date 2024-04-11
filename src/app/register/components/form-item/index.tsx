@@ -28,6 +28,7 @@ import {
   bnccCompetenceList,
   curriculumComponents,
   difficultyLevel,
+  specificSubjectList,
   subjectsList,
   years,
 } from "@/constants";
@@ -36,13 +37,17 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
+import React from "react";
 
 const itemFormSchema = z.object({
   knowledge: z.string().min(1, { message: "Selecione a Área do Conhecimento" }),
   componentCurricular: z
     .string()
     .min(1, { message: "Selecione um Componente" }),
-  subject: z.string().min(1, { message: "Selecione o Assunto" }),
+  subject: z.string().min(1, { message: "Selecione o Assunto Geral" }),
+  specificSubject: z
+    .string()
+    .min(1, { message: "Selecione o Assunto Específico" }),
   author: z.string().min(1, { message: "Selecione o Autor" }),
   year: z.string().min(1, { message: "Selecione o Ano" }),
   bnccCompetence: z.string().min(1, { message: "Selecione a Competência" }),
@@ -64,7 +69,7 @@ const itemFormSchema = z.object({
     .max(3000, { message: "Escreva no máximo 3000 caracteres" }),
   alternatives: z.array(
     z.object({
-      alternative: z.string().min(4, { message: "Escreva o item" }),
+      alternative: z.string().min(1, { message: "Escreva o item" }),
       correct: z.boolean(),
     }),
   ),
@@ -77,6 +82,8 @@ export default function FormItems() {
   const [selectedKnowledge, setSelectedKnowledge] = useState("");
   const [selectedCurriculum, setSelectedCurriculum] = useState("");
   const [selectedCompetence, setSelectedCompetence] = useState("");
+  const [selectedSubject, setSelectedSubject] = useState("");
+
   const [error, setError] = useState("");
 
   const [alternativesList, setAlternativesList] = useState([
@@ -107,6 +114,7 @@ export default function FormItems() {
       knowledge: "",
       componentCurricular: "",
       subject: "",
+      specificSubject: "",
       author: "",
       year: "",
       bnccCompetence: "",
@@ -126,6 +134,7 @@ export default function FormItems() {
           knowledge: data.knowledge,
           componentCurricular: data.componentCurricular,
           subject: data.subject,
+          specificSubject: data.specificSubject,
           author: data.author,
           year: data.year,
           bNCCCompetence: data.bnccCompetence,
@@ -252,7 +261,10 @@ export default function FormItems() {
                 <FormControl>
                   <Select
                     {...field}
-                    onValueChange={(value) => field.onChange(value)}
+                    onValueChange={(value) => {
+                      field.onChange(value);
+                      setSelectedSubject(value);
+                    }}
                     defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
@@ -267,6 +279,64 @@ export default function FormItems() {
                                 <SelectItem key={subjectIndex} value={subject}>
                                   {subject}
                                 </SelectItem>
+                              ))}
+                            </SelectGroup>
+                          ),
+                      )}
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="specificSubject"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Assunto Específico</FormLabel>
+                <FormControl>
+                  <Select
+                    {...field}
+                    onValueChange={(value) => field.onChange(value)}
+                    defaultValue={field.value}
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Selecione o Assunto Específico" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {Object.entries(specificSubjectList).map(
+                        ([discipline, topics], index) =>
+                          selectedCurriculum === discipline && (
+                            <SelectGroup key={index}>
+                              {topics.map((topicObj, topicIndex) => (
+                                <React.Fragment key={topicIndex}>
+                                  {Object.entries(topicObj).map(
+                                    ([topic, subtopics], subIndex) => (
+                                      <React.Fragment key={subIndex}>
+                                        {topic === selectedSubject &&
+                                          subtopics.map(
+                                            (subtopic, subtopicIndex) => (
+                                              <SelectItem
+                                                key={subtopicIndex}
+                                                value={
+                                                  typeof subtopic === "string"
+                                                    ? subtopic
+                                                    : ""
+                                                }
+                                              >
+                                                {typeof subtopic === "string"
+                                                  ? subtopic
+                                                  : ""}
+                                              </SelectItem>
+                                            ),
+                                          )}
+                                      </React.Fragment>
+                                    ),
+                                  )}
+                                </React.Fragment>
                               ))}
                             </SelectGroup>
                           ),
@@ -476,7 +546,7 @@ export default function FormItems() {
                 <FormControl>
                   <Textarea
                     placeholder="Se tiver, escreva o texto base para contextualização..."
-                    className="resize-none"
+                    className="min-h-[250px] resize-none"
                     {...field}
                   />
                 </FormControl>
@@ -494,7 +564,7 @@ export default function FormItems() {
                 <FormControl>
                   <Textarea
                     placeholder="Se tiver, escreva o texto (imagem em breve) usado como recurso..."
-                    className="resize-none"
+                    className="min-h-[200px] resize-none"
                     {...field}
                   />
                 </FormControl>
@@ -512,7 +582,7 @@ export default function FormItems() {
                 <FormControl>
                   <Textarea
                     placeholder="Escreva o Comando do Item!"
-                    className="resize-none"
+                    className="min-h-[150px] resize-none"
                     {...field}
                   />
                 </FormControl>
