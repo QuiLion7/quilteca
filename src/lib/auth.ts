@@ -21,14 +21,12 @@ export const authOptions: AuthOptions = {
       };
       return session;
     },
-    // async signIn({ user }) {
-    //   if (user.email && user.email.endsWith("@prof.ce.gov.br")) {
-    //     return true;
-    //   } else {
-    //     throw new Error(
-    //       "Apenas usuários com o domínio @prof.ce.gov.br podem fazer login.",
-    //     );
-    //   }
-    // },
+    async signIn({ user }) {
+      if (user.email && user.email.endsWith("@prof.ce.gov.br")) {
+        return true;
+      } else {
+        return "/info";
+      }
+    },
   },
 };
