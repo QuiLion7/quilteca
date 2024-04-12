@@ -5,6 +5,7 @@ import prismaClient from "@/lib/prisma";
 import { CardItem } from "./components/card";
 import { Prisma } from "@prisma/client";
 import { Alternative } from "@/utils/items.type";
+import Link from "next/link";
 
 export default async function MyItems() {
   const session = await getServerSession(authOptions);
@@ -50,11 +51,25 @@ export default async function MyItems() {
 
   return (
     <main className="flex w-full items-center justify-center 2xl:container">
-      <section className=" flex items-center justify-center gap-2">
+      <section className=" flex flex-col items-center justify-center gap-2 p-2">
         {formattedItemsList.map((item) => (
           <CardItem key={item.id} item={item} />
         ))}
       </section>
+
+      {formattedItemsList.length === 0 && (
+        <div className="flex h-[calc(100dvh-56px)] w-full flex-col items-center justify-center gap-2">
+          <h1 className="text-2xl font-bold uppercase">
+            Você ainda não possui nenhum item cadastrado!
+          </h1>
+          <Link
+            href="/register"
+            className=" rounded-lg bg-primary p-2 text-center font-bold uppercase"
+          >
+            Cadastrar Item
+          </Link>
+        </div>
+      )}
     </main>
   );
 }
