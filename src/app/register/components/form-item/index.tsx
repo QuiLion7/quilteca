@@ -146,7 +146,6 @@ export default function FormItems() {
           alternatives: data.alternatives,
           userId: userId,
         });
-        console.log(response.data);
         setError("");
         form.reset();
         router.refresh();
@@ -632,10 +631,7 @@ export default function FormItems() {
             <p className="w-full text-center text-destructive">{error}</p>
           )}
 
-          <Button
-            type="submit"
-            className="w-full rounded-lg uppercase uppercase"
-          >
+          <Button type="submit" className="w-full rounded-lg uppercase">
             Registrar Item
           </Button>
         </form>
