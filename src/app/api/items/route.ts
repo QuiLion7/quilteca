@@ -7,6 +7,39 @@ export async function GET(req: Request) {
   return NextResponse.json(req);
 }
 
+export async function DELETE(req: Request) {
+  const session = await getServerSession(authOptions);
+
+  if (!session || !session.user) {
+    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
+  }
+
+  const { searchParams } = new URL(req.url);
+  const userId = searchParams.get("id");
+
+  if (!userId) {
+    return NextResponse.json(
+      { message: "Item Deletado com Sucesso!" },
+      { status: 200 },
+    );
+  }
+
+  try {
+    await prismaClient.item.delete({
+      where: {
+        id: userId as string,
+      },
+    });
+
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Falha ao deletar item" },
+      { status: 400 },
+    );
+  }
+}
+
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
 
