@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/providers/auth";
 import Header from "@/components/header";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Inter as FontSans } from "next/font/google";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "QuiLTeca - Biblioteca para Professores",
@@ -12,6 +11,10 @@ export const metadata: Metadata = {
     "Contribua e utilize a melhor biblioteca de itens gratuitos para professores.",
 };
 
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,7 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={cn(
+          "max-w-screen min-h-screen w-full overflow-hidden bg-background font-sans antialiased",
+          fontSans.variable,
+        )}
+      >
         <AuthProvider>
           <Header />
           {children}
